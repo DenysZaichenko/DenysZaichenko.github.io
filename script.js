@@ -917,3 +917,60 @@ _panel.addEventListener('touchstart', e => { _touchStartY = e.touches[0].clientY
 _panel.addEventListener('touchend', e => {
   if (e.changedTouches[0].clientY - _touchStartY > 80) closePanel();
 }, { passive: true });
+
+// ── Scroll reveal ─────────────────────────────
+// Sections and their items fade up in order — the batch already on screen
+// cascades in right after the hero (#about) intro, the rest on scroll.
+(function () {
+  const targets = Array.from(document.querySelectorAll('.reveal'));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('in'));
+    return;
+  }
+
+  const reveal = (el, delay) => {
+    el.style.transitionDelay = (delay || 0) + 'ms';
+    el.classList.add('in');
+  };
+
+  // Anything touching the viewport at load — must match what the observer
+  // would fire on immediately, so nothing slips through un-animated.
+  const inView = el => {
+    const r = el.getBoundingClientRect();
+    return r.top < window.innerHeight && r.bottom > 0;
+  };
+
+  // Visible on first load — cascade in order once #about has played.
+  const initial = targets.filter(inView);
+  const BASE = 550;  // let the hero intro finish first
+  const STEP = 90;   // gap between consecutive items
+  initial.forEach((el, i) => setTimeout(() => reveal(el), BASE + i * STEP));
+
+  // Below the fold — reveal on scroll, staggered within each group.
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const siblings = el.parentElement
+        ? Array.from(el.parentElement.querySelectorAll(':scope > .reveal'))
+        : [el];
+      const i = Math.max(0, siblings.indexOf(el));
+      reveal(el, Math.min(i, 6) * 70);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+  targets.filter(el => initial.indexOf(el) === -1).forEach(el => io.observe(el));
+
+  // Safety net: short elements flush against the page bottom (the footer)
+  // can sit below the observer's trigger line — reveal any stragglers
+  // once the user reaches the end of the page.
+  const flushRemaining = () => {
+    if (window.innerHeight + window.scrollY < document.body.offsetHeight - 2) return;
+    targets.forEach(el => el.classList.contains('in') || reveal(el));
+    window.removeEventListener('scroll', flushRemaining);
+  };
+  window.addEventListener('scroll', flushRemaining, { passive: true });
+})();
