@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denys Zaichenko — Aspiring Game Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+<div class="panel" id="panel">
+  <div class="panel-handle" onclick="closePanel()"><span></span></div>
+  <div class="panel-bar">
+    <div class="panel-bar-left">
+      <div class="panel-pre" id="panel-pre">project</div>
+    </div>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-scroll">
+    <div class="panel-inner" id="panel-body"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lightbox-nav prev" type="button" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Previous">‹</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+  <button class="lightbox-nav next" type="button" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Next">›</button>
+</div>
+
+<header>
+  <nav>
+    <a href="#about" class="logo">cd://zaichenko</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#current">current</a></li>
+      <li><a href="#future">future</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page">
+
+  <section id="about">
+    <div>
+      <div class="hero-pre">// aspiring game designer</div>
+      <div class="hero-name">DENYS <span class="dim">ZAICHENKO</span></div>
+      <div class="hero-bio">
+        I love playing games — but lately I've become fascinated by how<br>
+        they work from the inside. My goal is to build the game of my dreams<br>
+        and share that joy with fellow players who feel the same way.
+      </div>
+      <div class="hero-tags">
+        <span class="tag on">game design</span>
+        <span class="tag on">narrative design</span>
+        <span class="tag on">level design</span>
+        <span class="tag on">gameplay systems</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <a href="files/cv.pdf" download="Denys_Zaichenko_CV.pdf" class="btn btn-primary">Download CV</a>
+      <a href="#projects" class="btn btn-ghost">View Projects</a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">projects</div>
+    <div class="proj-list">
+
+      <div class="proj" data-color="orange" onclick="openPanel('spellforge')">
+        <div class="proj-idx">01</div>
+        <div>
+          <div class="proj-type mech">Mechanics System</div>
+          <div class="proj-title">Spellforge</div>
+          <div class="proj-desc">roguelike · spell combination system</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-orange"></span>in dev</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="proj" data-color="orange" onclick="openPanel('slasherknight')">
+        <div class="proj-idx">02</div>
+        <div>
+          <div class="proj-type mech">Mechanics System</div>
+          <div class="proj-title">SlashKnight</div>
+          <div class="proj-desc">action · combo pattern recognition system</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-green"></span>complete</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="proj" data-color="gold" onclick="openPanel('bloodveil')">
+        <div class="proj-idx">03</div>
+        <div>
+          <div class="proj-type gdd">GDD</div>
+          <div class="proj-title">Project: Bloodveil</div>
+          <div class="proj-desc">mechanics · narrative · worldbuilding</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-green"></span>complete</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="proj" data-color="gold" onclick="openPanel('covenant')">
+        <div class="proj-idx">04</div>
+        <div>
+          <div class="proj-type gdd">MDD</div>
+          <div class="proj-title">Project: Covenant Of Three</div>
+          <div class="proj-desc">tactical rpg · mechanics design document</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-amber"></span>writing</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="proj" data-color="orange" onclick="openPanel('nemesis')">
+        <div class="proj-idx">05</div>
+        <div>
+          <div class="proj-type mech">Mechanics System</div>
+          <div class="proj-title">Nemesis</div>
+          <div class="proj-desc">survival horror · inventory system</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-orange"></span>in dev</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="proj" data-color="orange" onclick="openPanel('solidenemy')">
+        <div class="proj-idx">06</div>
+        <div>
+          <div class="proj-type mech">Mechanics System</div>
+          <div class="proj-title">Solid Enemy</div>
+          <div class="proj-desc">enemy ai · inventory system · items</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="proj-status"><span class="sd sd-orange"></span>in dev</div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="current">
+    <div class="sec-head">current project</div>
+    <div class="cur-card">
+      <div>
+        <div class="cur-label">// actively working on</div>
+        <div class="cur-title">Solid Enemy</div>
+        <div class="cur-chips">
+          <span class="chip">Stealth / Action</span>
+          <span class="chip">Unreal Engine 5</span>
+          <span class="chip">Enemy AI</span>
+        </div>
+        <div class="cur-note">
+          A systems project centered on stealth enemy AI, inspired by Metal Gear Solid.<br>
+          Building the full guard loop — patrol routes, reaction to environmental sound, player search,<br>
+          raising and responding to alarms, and open fire on contact — alongside an inventory system and interactive items.
+        </div>
+      </div>
+      <div class="cur-right">
+        <div class="cur-status"><span class="sd sd-orange"></span> in dev</div>
+        <div class="cur-progress-label">Project progress</div>
+        <div class="cur-bar-bg"><div class="cur-bar-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="future">
+    <div class="sec-head">future projects</div>
+    <div class="future-list">
+
+      <div class="future-proj" onclick="openPanel('cot')">
+        <div class="future-idx">01</div>
+        <div>
+          <div class="future-type">Mechanics System</div>
+          <div class="future-title">Covenant Of Three</div>
+          <div class="future-desc">tactical turn-based RPG · role-specific playstyles</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="future-badge">planned</div>
+          <div class="future-arrow">→</div>
+        </div>
+      </div>
+
+      <div class="future-proj" onclick="openPanel('whitewolf')">
+        <div class="future-idx">02</div>
+        <div>
+          <div class="future-type">Mechanics System</div>
+          <div class="future-title">White Wolf</div>
+          <div class="future-desc">action RPG · character progression system</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="future-badge">planned</div>
+          <div class="future-arrow">→</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head">contact</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="ci-label">email</div>
+        <div class="ci-val"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=den.dz2004@gmail.com" target="_blank">den.dz2004@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">discord</div>
+        <div class="ci-val empty"><a href="https://discord.com/users/fallen_angel_6922" target="_blank">DeNYs</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">steam</div>
+        <div class="ci-val empty"><a href="https://steamcommunity.com/profiles/76561199029068164/" target="_blank">fallen Angel</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">linkedin</div>
+        <div class="ci-val empty"><a href="https://www.linkedin.com/in/denys-zaichenko-74b7bb29b/" target="_blank">Denys Zaichenko</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="ft">cd://zaichenko · 2026</span>
+    <span class="ft">open to work</span>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
