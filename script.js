@@ -829,7 +829,7 @@ const projects = {
         <div style="border:1px solid var(--border);overflow:hidden;">
           <img src="images/whitewolf/screenshot_whitewolf.webp" alt="White Wolf — concept" style="width:100%;display:block;opacity:.9;cursor:zoom-in;" onclick="openLightbox(this)" />
           <div style="padding:10px 14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;">
-            White wolf
+            White WOLF
           </div>
         </div>
       </div>
