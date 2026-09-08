@@ -115,6 +115,7 @@ const projects = {
         <div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:18px;">
           Prototype screenshots
         </div>
+        <!-- VIDEO temporarily disabled
         <div style="border:1px solid var(--border);overflow:hidden;">
           <div style="position:relative;padding-bottom:56.25%;height:0;">
             <iframe src="https://www.youtube.com/embed/p-wCGO7fTz8" title="SpellForge — prototype demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
@@ -123,6 +124,7 @@ const projects = {
             Prototype demo
           </div>
         </div>
+        -->
       </div>
 
       <div class="p-section">
@@ -464,6 +466,7 @@ const projects = {
         <div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:18px;">
           Screenshots · complete build
         </div>
+        <!-- VIDEO temporarily disabled
         <div style="border:1px solid var(--border);overflow:hidden;">
           <div style="position:relative;padding-bottom:56.25%;height:0;">
             <iframe src="https://www.youtube.com/embed/UiFyUmJVRhM" title="SlashKnight — prototype demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
@@ -472,6 +475,7 @@ const projects = {
             SlashKnight prototype demo · complete build · all mechanics implemented
           </div>
         </div>
+        -->
       </div>
 
       <div class="p-section">
